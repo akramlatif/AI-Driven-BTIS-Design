@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { 
   Shield, AlertTriangle, Users, Activity, 
-  Clock, TrendingUp, 
+  Clock, 
   Bell, Menu, X,
   UserCheck, AlertOctagon, BarChart3, Eye, Download, Loader2, LogOut
 } from 'lucide-react'
@@ -72,8 +72,8 @@ function AppContent() {
   const [severityFilter, setSeverityFilter] = useState('all')
   const [statusFilter, setStatusFilter] = useState('all')
   const [isRetraining, setIsRetraining] = useState(false)
-  const [selectedAlertTab, setSelectedAlertTab] = useState('all')
-  const [isLoadingData, setIsLoadingData] = useState(false)
+  const [selectedAlertTab, _setSelectedAlertTab] = useState('all')
+  const [_isLoadingData, setIsLoadingData] = useState(false)
   const [showThreatAlert, setShowThreatAlert] = useState(false)
 
   const [stats, setStats] = useState<DashboardStats>({
@@ -154,16 +154,6 @@ function AppContent() {
     }
   ])
 
-  // Activity feed
-  const activityFeed = [
-    { time: '02:15:33', user: 'malicious.user', action: 'Downloaded 50 sensitive files', severity: 'critical' },
-    { time: '02:14:12', user: 'malicious.user', action: 'Data export attempt', severity: 'high' },
-    { time: '02:10:05', user: 'malicious.user', action: 'Login from suspicious IP', severity: 'high' },
-    { time: '01:30:12', user: 'john.doe', action: 'Accessed confidential document', severity: 'medium' },
-    { time: '22:45:00', user: 'jane.smith', action: 'Login outside business hours', severity: 'low' },
-    { time: '18:20:15', user: 'bob.wilson', action: 'Failed login attempt', severity: 'low' }
-  ]
-
   // Fetch live data from API on mount
   useEffect(() => {
     const fetchData = async () => {
@@ -236,15 +226,6 @@ function AppContent() {
     if (statusFilter !== 'all' && alert.status !== statusFilter) return false
     return true
   })
-
-  // Dynamic alert counts by severity
-  const alertCounts = {
-    all: alerts.length,
-    critical: alerts.filter(a => a.severity === 'critical').length,
-    high: alerts.filter(a => a.severity === 'high').length,
-    medium: alerts.filter(a => a.severity === 'medium').length,
-    low: alerts.filter(a => a.severity === 'low').length
-  }
 
   const getSeverityColor = (severity: string) => {
     switch (severity) {

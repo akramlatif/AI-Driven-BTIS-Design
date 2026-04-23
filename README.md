@@ -116,6 +116,34 @@ python main.py
 
 ---
 
+## Screenshots
+
+### Dashboard Overview
+
+![BTIS Dashboard Overview](docs/screenshots/dashboard-overview.png)
+
+### Security Alerts
+
+![BTIS Alerts Page](docs/screenshots/alerts-page.png)
+
+### Users at Risk
+
+![BTIS Users at Risk](docs/screenshots/users-at-risk.png)
+
+### Behavior Analysis
+
+![BTIS Behavior Analysis](docs/screenshots/behavior-analysis.png)
+
+### ML Models
+
+![BTIS ML Models](docs/screenshots/ml-models.png)
+
+### Email Alert - High Risk User Detected
+
+![BTIS Email Alert](docs/screenshots/email-alert-high-risk.jpg)
+
+---
+
 ## Author
 
 Akram Latif
